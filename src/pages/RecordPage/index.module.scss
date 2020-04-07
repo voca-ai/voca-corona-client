@@ -1,0 +1,233 @@
+@import "~ui/cssHelpers.scss";
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    align-self: center;
+    background: white;
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,.05);
+    padding: 40px 60px 50px;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    
+    height: 85%;
+    max-width: 100%;
+    width: 1000px;
+    overflow: auto;
+    
+    @include media-breakpoint-down(sm) {
+        height: 100%;
+        width: 1000px;
+        padding: 20px;
+    }
+    
+    .recordingPhase {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            .previous, .next {
+                background: none;
+                border: none;
+                cursor: pointer;
+                
+                &.disabled {
+                    color: #bbb;
+                }
+            }
+        }
+        
+        .sentence {
+            text-align: center;
+            white-space: initial;
+            
+            h1 {
+                display: block;
+                font-size: 2em;
+                @include media-breakpoint-down(sm) {
+                    font-size: 1.4em;
+                }
+            }
+            
+            .description {
+                margin-top: 10px;
+                text-align: left;
+                overflow-y: scroll;
+                font-size: 1.2em;
+            }
+            overflow: hidden;
+            
+            flex: 1 1 0;
+            min-height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .bottom {
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    .verificationPhase {
+        align-self: center;
+        text-align: center;
+        
+        section {
+            &:not(:first-child) {
+                margin-top: 50px;
+            }
+            .controls {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                
+                > * {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+.instruction {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.recordButton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 40px;
+    flex: 1;
+    
+    @include media-breakpoint-down(sm) {
+        margin: 0;
+    }
+    
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        border: none;
+        border-radius: 50%;
+        width: 88px;
+        height: 88px;
+        background: white;
+        outline: none;
+        
+        &.active {
+            background: #ea626a;
+        }
+    }
+    
+    .background {
+        position: absolute;
+        margin: 0 auto;
+        border-radius: 50%;
+        filter: blur(7.6px);
+        transition: opacity .2s linear;
+        opacity: .7;
+        background: linear-gradient(90deg,#f89096,#b1b4e5);
+        width: 109px;
+        height: 109px;
+        
+    }
+    &:hover .background {
+        opacity: 1!important;
+    }
+    
+    .loading & {
+        filter: grayscale(1);
+        pointer-events: none;
+    }
+}
+
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.doneMessage {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include media-breakpoint-up(md) {
+        padding: 50px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        
+        [x-name="thankyou"] {
+            font-size: 1.3em;
+            @include media-breakpoint-down(sm) {
+                font-size: 1.1em;
+            }
+        }
+
+        [x-name="feedback"] {
+            margin-top: 25px;
+            font-size: 1.1em;
+            min-width: 50%;
+            width: 70%;
+
+            @include media-breakpoint-down(sm) {
+                width: 100%;
+            }
+
+            textarea {
+                height: 150px;
+            }
+
+            button {
+                margin: 10px;
+            }
+        }
+
+        [x-name="feedbackSubmitted"] {
+            margin-top: 25px;
+
+            font-size: 2em;
+            a {
+                font-size: 0.7em;
+            }
+        }
+    }
+    
+    footer {
+    }
+}

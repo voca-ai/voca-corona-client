@@ -1,0 +1,86 @@
+@import "~ui/cssHelpers.scss";
+
+.logo {
+    display: block;
+    margin: auto;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    align-self: center;
+    background: white;
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,.05);
+    padding: 40px 100px 50px;
+    position: relative;
+
+    display: grid;
+    grid-template: 
+        auto
+        fit-content
+        / auto auto
+    ;
+
+    overflow: hidden;
+    max-width: 800px;
+    height: 80%;
+    overflow: auto;
+
+    @include media-breakpoint-down(sm) {
+        max-height: 100%;
+        height: 100%;
+        padding: 15px;
+    }
+}
+
+.terms {
+    flex: 1;
+    min-height: 200px;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+    text-align: left;
+    padding-right: 10px;
+    grid-column-end: span 2;
+    margin-bottom: 20px;
+
+    h1 { font-size: 1.7em }
+    h2 { font-size: 1.4em }
+    h3 { font-size: 1.1em }
+
+    @include media-breakpoint-down(sm) {
+        margin-bottom: 10px;
+        padding-right: 0;
+    }
+}
+
+.checkbox.checkbox {
+    align-self: center;
+    justify-self: start;
+    
+    * {
+        cursor: pointer;
+    }
+    
+    margin: 0;
+
+    @include media-breakpoint-down(sm) {
+        grid-column-end: span 2;
+        margin-bottom: 10px;
+    }
+}
+
+.proceedButton.proceedButton {
+    align-self: center;
+    padding: 8px 2px;
+    // height: 30px;
+
+    @include media-breakpoint-down(sm) {
+        grid-column-end: span 2;
+    }
+}
